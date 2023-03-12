@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/Iv1"
+
+        />
+
+
+
+
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:hint="Enter First Value"
+       android:id="@+id/et_first"
+       />
+
+
+      <EditText
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:hint="Enter Second Value"
+       android:id="@+id/et_second"
+       />
+
+
+      <EditText
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:hint="Enter Third Value"
+       android:id="@+id/et_third"
+       />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter Link"
+        android:id="@+id/et_Link"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Send"
+        android:id="@+id/btn_Send"
+        />
+
+ <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="update"
+        android:id="@+id/btn_update"
+        />
+
+
+ <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="fetch"
+        android:id="@+id/btn_fetch"
+        />
+
+
+
+ <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="delete"
+        android:id="@+id/btn_delete"
+        />
+
+
+   <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Value"
+        android:textSize="32sp"
+        android:layout_gravity="center"
+        android:id="@+id/tv_first"
+        />
+
+
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second Value"
+        android:textSize="32sp"
+        android:layout_gravity="center"
+        android:id="@+id/tv_second"
+        />
+
+
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="third Value"
+        android:textSize="32sp"
+        android:layout_gravity="center"
+        android:id="@+id/tv_third"
+        />
+-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Next"
+        android:id="@+id/ButtonNext"
+        />
+
+
+
+
+
+
+</LinearLayout>
