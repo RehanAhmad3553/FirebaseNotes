@@ -11,10 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ownfb.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,12 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent,45);
 
-                Toast.makeText(MainActivity.this, "Image", Toast.LENGTH_SHORT).show();
 
             }
         });
-
-
 
 
 
@@ -88,21 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                HashMap<String, Object> map = new HashMap<>();
-
-                map.put("first", binding.etFirst.getText().toString());
-                map.put("second", binding.etSecond.getText().toString());
-                map.put("third", binding.etThird.getText().toString());
-                map.put("Imageurl",String.valueOf(counter+1));
 
 
 
-                FirebaseDatabase.getInstance().getReference().child("School").child(String.valueOf(counter+1)).setValue(map);
-
-
-
-
-               /* FirebaseStorage.getInstance().getReference().child("FolderName").child(String.valueOf(maxId+1)).putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                FirebaseStorage.getInstance().getReference().child("FolderName").child(String.valueOf(maxId+1)).putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -111,13 +101,30 @@ public class MainActivity extends AppCompatActivity {
                         ImageURl = uriTask.getResult().toString();
 
 
+                        HashMap<String, Object> map = new HashMap<>();
+
+                        map.put("first", binding.etFirst.getText().toString());
+                        map.put("second", binding.etSecond.getText().toString());
+                        map.put("third", binding.etThird.getText().toString());
+                        map.put("Imageurl",ImageURl);
+
+
+
+
+
+
+                        FirebaseDatabase.getInstance().getReference().child("School").child(String.valueOf(maxId+1)).setValue(map);
+
+                        binding.Iv1.setImageURI(null);
+
+                        Toast.makeText(MainActivity.this, "Insert", Toast.LENGTH_SHORT).show();
+
 
 
 
 
                     }
                 });
-*/
 
 
 
@@ -142,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                FirebaseDatabase.getInstance().getReference().child("School").addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("School").child("1").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -154,12 +161,12 @@ public class MainActivity extends AppCompatActivity {
                             String third = (String) map.get("third");
 
 
+                            Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
 
-
-                           /* binding.tvFirst.setText(name);
+                         /*   binding.tvFirst.setText(name);
                             binding.tvSecond.setText(second);
-                            binding.tvThird.setText(third);*/
-
+                            binding.tvThird.setText(third);
+*/
 
                         }
 

@@ -6,62 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity2">
-    <EditText
+
+
+    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+        android:id="@+id/carousel"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Enter Roll No"
-        android:id="@+id/et_roll"
-        />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/iv2"
-        />
+        android:layout_height="256dp" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fist value"
-        android:textSize="32sp"
-        android:id="@+id/tv_rec_first"
-        />
-
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="second value"
-        android:textSize="32sp"
-        android:id="@+id/tv_rec_second"
-        />
-
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="third"
-        android:textSize="32sp"
-        android:id="@+id/tv_rec_third"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="fetch"
-        android:id="@+id/Button_FETCH_Recod"
-        />
-
-
-
-
-
-
-
-
-
-
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/Recycler"
+    />
 
 
 
