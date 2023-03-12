@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent,45);
 
-
+                Toast.makeText(MainActivity.this, "Image", Toast.LENGTH_SHORT).show();
 
             }
         });
