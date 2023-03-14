@@ -10,8 +10,6 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
-
 public class MainActivity2 extends AppCompatActivity {
 
     ActivityMain2Binding binding;
@@ -33,7 +31,11 @@ public class MainActivity2 extends AppCompatActivity {
         binding.Recycler.setLayoutManager(layoutManager);
 
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("School");
+
+
+        Query query = FirebaseDatabase.getInstance().getReference().child("Shaheen");
+
+
 
         FirebaseRecyclerOptions<model> options = new FirebaseRecyclerOptions.Builder<model>()
                 .setQuery(query,model.class)

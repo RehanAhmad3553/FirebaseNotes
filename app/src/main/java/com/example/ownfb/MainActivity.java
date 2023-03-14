@@ -17,8 +17,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
+
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        //fetch();
 
 
         binding.Iv1.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
@@ -92,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                FirebaseStorage.getInstance().getReference().child("FolderName").child(String.valueOf(maxId+1)).putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+
+                FirebaseStorage.getInstance().getReference().child("Shaheen").child(String.valueOf(maxId+1)).putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -106,14 +115,20 @@ public class MainActivity extends AppCompatActivity {
                         map.put("first", binding.etFirst.getText().toString());
                         map.put("second", binding.etSecond.getText().toString());
                         map.put("third", binding.etThird.getText().toString());
-                        map.put("Imageurl",ImageURl);
+                        map.put("imageUrl",ImageURl);
+
+               /* // Extra Slider Pics Send
+                map.put("extraLink1", binding.etLink.getText().toString());
+                map.put("extraLink2", binding.etLink2.getText().toString());*/
+
+
+                FirebaseDatabase.getInstance().getReference().child("School").child(String.valueOf(maxId+1)).setValue(map);
+
+                        db.collection("USers").document(String.valueOf(maxId+1)).set(map);
 
 
 
 
-
-
-                        FirebaseDatabase.getInstance().getReference().child("School").child(String.valueOf(maxId+1)).setValue(map);
 
                         binding.Iv1.setImageURI(null);
 
@@ -139,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
             }
         });
 
@@ -148,36 +162,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                FirebaseDatabase.getInstance().getReference().child("School").child("1").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        Map map = (Map) snapshot.getValue();
-
-                        if (snapshot.exists()) {
-                            String name = (String) map.get("first");
-                            String second = (String) map.get("second");
-                            String third = (String) map.get("third");
-
-
-                            Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
-
-                         /*   binding.tvFirst.setText(name);
-                            binding.tvSecond.setText(second);
-                            binding.tvThird.setText(third);
-*/
-
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
 
 
             }
@@ -193,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 updateHash.put("first", binding.etFirst.getText().toString());
                 updateHash.put("second", binding.etSecond.getText().toString());
                 updateHash.put("third", binding.etThird.getText().toString());
+
 
                 FirebaseDatabase.getInstance().getReference().child("School").updateChildren(updateHash);
 
@@ -240,6 +225,53 @@ public class MainActivity extends AppCompatActivity {
             binding.Iv1.setImageURI(uri);
 
         }
+
+
+    }
+
+
+
+    public void fetch()
+    {
+        FirebaseDatabase.getInstance().getReference().child("School").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Map map = (Map) snapshot.getValue();
+
+                if (snapshot.exists()) {
+                    String name = (String) map.get("first");
+                    String second = (String) map.get("second");
+                    String third = (String) map.get("third");
+
+                    //Extra SliderPic FetchLogic
+                    String extraLink = (String) map.get("extraLink1");
+                    String extraLink2 = (String) map.get("extraLink2");
+
+                    binding.carousel.addData(new CarouselItem(name,""));
+                    binding.carousel.addData(new CarouselItem(second,""));
+                    binding.carousel.addData(new CarouselItem(third,""));
+
+                    binding.carousel.addData(new CarouselItem(extraLink,""));
+                    binding.carousel.addData(new CarouselItem(extraLink2,""));
+
+
+
+                         /*   binding.tvFirst.setText(name);
+                            binding.tvSecond.setText(second);
+                            binding.tvThird.setText(third);
+*/
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }
