@@ -19,18 +19,19 @@
 
 
 
-     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+   <!--  <org.imaginativeworld.whynotimagecarousel.ImageCarousel
        android:id="@+id/carousel"
        android:layout_width="match_parent"
+
          app:autoPlay="true"
 
 
-       android:layout_height="256dp" />
+       android:layout_height="256dp" />-->
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/Iv1"
+        android:id="@+id/imageview"
 
         />
 
@@ -83,7 +84,49 @@
         android:id="@+id/btn_Send"
         />
 
- <Button
+      <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_marginTop="20dp"
+      >
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="FirstValue"
+                 android:textSize="32sp"
+                 android:layout_gravity="center"
+                 android:id="@+id/tvFirst"
+                 />
+
+
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="SecondValue"
+                 android:textSize="32sp"
+                 android:layout_gravity="center"
+                 android:id="@+id/tvSecond"
+                 />
+
+
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="ThirdValue"
+                 android:textSize="32sp"
+                 android:layout_gravity="center"
+                 android:id="@+id/tvThird"
+                 />
+
+
+         </LinearLayout>
+
+
+ <!--<Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="update"
@@ -105,7 +148,7 @@
         android:layout_height="50dp"
         android:text="delete"
         android:id="@+id/btn_delete"
-        />
+        />-->
 
 
    <!-- <TextView
@@ -143,9 +186,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Next"
-        android:id="@+id/ButtonNext"
+        android:text="Fetch"
+        android:id="@+id/btnFetch"
         />
+
+
 
 
 
